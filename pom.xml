@@ -10,15 +10,22 @@
     <version>1.1.4</version> <!-- NOTE - If major/minor version changes, update finalName in build tag -->
 
     <name>jgrade</name>
-    <url>https://github.com/tkutche1/jgrade</url>
+    <url>https://github.com/uiuc-cs126/jgrade</url>
     <description>A library for grading Java assignments</description>
 
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://github.com/tkutche1/jgrade/blob/master/LICENSE.md</url>
+            <url>https://github.com/uiuc-cs126/jgrade/blob/master/LICENSE.md</url>
         </license>
     </licenses>
+
+    <scm>
+        <url>https://github.com/uiuc-cs126/jgrade</url>
+        <connection>scm:git:ssh://git@github.com:uiuc-cs126/jgrade.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:uiuc-cs126/jgrade.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

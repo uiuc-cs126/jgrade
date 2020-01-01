@@ -1,8 +1,10 @@
 
 # JGrade
-_A library for grading Java assignments_
+_A library for grading Java assignments_.
 
-[![Build Status](https://travis-ci.com/tkutcher/jgrade.svg?token=o33zRRbwCfdkkKhsDNVp&branch=development)](https://travis-ci.com/tkutcher/jgrade)
+This project was forked from [`tkutcher/jgrade`](https://github.com/tkutcher/jgrade).
+
+[![Build Status](https://travis-ci.org/uiuc-cs126/jgrade.svg?branch=development)](https://travis-ci.com/uiuc-cs126/jgrade)
 
 - [Overview](#overview)
   - [Library Files](#library-files)
@@ -19,7 +21,7 @@ _A library for grading Java assignments_
 ---
 
 ## Overview
-JGrade is a helper tool with various classes designed to assist in course instructors "autograding" an assignment, inspired by the [Gradescope Autograder](https://gradescope-autograders.readthedocs.io/en/latest/). There are classes that the client can integrate with directly, or use the jar's main method (and provide a class with annotations) that wraps a lot of common functionality (see [examples](https://github.com/tkutche1/jgrade/tree/development/examples)). It was designed to produce the output needed for Gradescope while being extensible enough to produce different outputs and configure the specific JSON output Gradescope is looking for.
+JGrade is a helper tool with various classes designed to assist in course instructors "autograding" an assignment, inspired by the [Gradescope Autograder](https://gradescope-autograders.readthedocs.io/en/latest/). There are classes that the client can integrate with directly, or use the jar's main method (and provide a class with annotations) that wraps a lot of common functionality (see [examples](https://github.com/uiuc-cs126/jgrade/tree/development/examples)). It was designed to produce the output needed for Gradescope while being extensible enough to produce different outputs and configure the specific JSON output Gradescope is looking for.
 
 ### Library Files
 
@@ -67,7 +69,7 @@ When repackaging and making a jar that can be run as an executable, I modeled Pr
 
 <!-- TODO - Move a lot of this to Wiki -->
 
-The [examples](https://github.com/tkutche1/jgrade/tree/development/examples) directory highlights most of the core functionality. There are two ways to utilize this library.
+The [examples](https://github.com/uiuc-cs126/jgrade/tree/development/examples) directory highlights most of the core functionality. There are two ways to utilize this library.
 
 First, the client can instantiate/extend their own `Grader` (which is a public class). They can implement then attach their own observers (or just use the provided `GradescopeJsonObserver`) and produce their desired output. They can use whatever other `Grader` methods as desired.
 
@@ -133,14 +135,14 @@ _For a more detailed API description, see how to acquire the [full API](#full-ap
 
 ### Building JGrade
 
-The jar can be downloaded directly from the [Releases](https://github.com/tkutche1/jgrade/releases).
+The jar can be downloaded directly from the [Releases](https://github.com/uiuc-cs126/jgrade/releases).
 
 Alternatively, you can clone the repository and build it yourself. The project is setup as a maven project, so if you've installed maven and have cloned this locally then to build the project you just need to run `mvn install` to build the entire project.
 
 Note that `jgrade-X.X.X.jar` does not include the other dependencies for the project while `jgrade-X.X.X-all.jar` does. If running as an executable, you'd need all dependencies anyways. If the only thing you use is the `Grader` object and some JUnit stuff, and you have your own `OutputObserver`, then there's no need to include all dependencies.
 
 ### Running Tests
-Similarly, to run the unit tests for this just run `mvn test`. There is also a class in the jgrade package (in the [tests](https://github.com/tkutche1/jgrade/tree/development/src/test/java/edu/jhu/cs/jgrade) directory of this repository named `AllJGradeTests` - this class is a suite of all unit tests for the program. Note that to test the `GradedTestListener` class there are some dummy unit test inner classes that are not actual tests (many of which fail intentionally).
+Similarly, to run the unit tests for this just run `mvn test`. There is also a class in the jgrade package (in the [tests](https://github.com/uiuc-cs126/jgrade/tree/development/src/test/java/edu/jhu/cs/jgrade) directory of this repository named `AllJGradeTests` - this class is a suite of all unit tests for the program. Note that to test the `GradedTestListener` class there are some dummy unit test inner classes that are not actual tests (many of which fail intentionally).
 
 ### Requirements
 JGrade is written in [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html). Since the library has classes designed to run alongside JUnit, [JUnit 4](https://junit.org/junit4/) is a dependency for the entire project (as opposed to just running the projects own unit tests). The [org.json](https://mvnrepository.com/artifact/org.json/json) package is used in producing correctly formatted JSON output, and the [Apache Commons CLI](https://commons.apache.org/proper/commons-cli/) library is used for reading the command line in the main program.
@@ -148,4 +150,4 @@ JGrade is written in [Java 8](https://www.oracle.com/technetwork/java/javase/ove
 For simplicity, the main jar (appended with "-all") includes all of these dependencies.
 
 ### Full API
-The full API (generated from the Javadoc comments) can be retrieved from the [Releases](https://github.com/tkutche1/jgrade/releases) page as well. The pom also uses the maven javadoc plugin so to build this yourself you could run `mvn javadoc:jar`
+The full API (generated from the Javadoc comments) can be retrieved from the [Releases](https://github.com/uiuc-cs126/jgrade/releases) page as well. The pom also uses the maven javadoc plugin so to build this yourself you could run `mvn javadoc:jar`
