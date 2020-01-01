@@ -5,7 +5,7 @@
     <groupId>edu.jhu.cs</groupId>
     <artifactId>jgrade</artifactId>
     <packaging>jar</packaging>
-    <version>1.1.5-SNAPSHOT</version> <!-- NOTE - If major/minor version changes, update finalName in build tag -->
+    <version>1.1.4-SNAPSHOT</version> <!-- NOTE - If major/minor version changes, update finalName in build tag -->
 
     <name>jgrade</name>
     <url>https://github.com/uiuc-cs126/jgrade</url>
