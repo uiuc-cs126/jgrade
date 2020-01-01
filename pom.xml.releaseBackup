@@ -5,7 +5,7 @@
     <groupId>edu.jhu.cs</groupId>
     <artifactId>jgrade</artifactId>
     <packaging>jar</packaging>
-    <version>1.1.6-SNAPSHOT</version> <!-- NOTE - If major/minor version changes, update finalName in build tag -->
+    <version>1.1.5-SNAPSHOT</version> <!-- NOTE - If major/minor version changes, update finalName in build tag -->
 
     <name>jgrade</name>
     <url>https://github.com/uiuc-cs126/jgrade</url>
@@ -72,6 +72,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
+                <configuration>
+                    <additionalOptions>-html5</additionalOptions>
+                </configuration>
             </plugin>
 
             <!-- FIXME - Get rid of warnings... -->
