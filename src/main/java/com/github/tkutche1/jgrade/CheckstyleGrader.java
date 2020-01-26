@@ -12,6 +12,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
@@ -51,6 +52,7 @@ public class CheckstyleGrader {
     private String pathToJar;
     private String dirToCheck;
     private String config;
+    private String visibility;
 
     private Map<String, Integer> errorTypes;
 
@@ -63,12 +65,39 @@ public class CheckstyleGrader {
      */
     public CheckstyleGrader(double points, double deduct,
                             String pathToJar, String dirToCheck) {
+        this(points, deduct, pathToJar, dirToCheck, VISIBLE);
+    }
+
+    /**
+     * Instantiate a new CheckstyleGrader.
+     * @param points The total number of points for the checkstyle test.
+     * @param deduct The number of points to deduct per error.
+     * @param pathToJar The path to the checkstyle jar executable.
+     * @param dirToCheck The directory of files to check.
+     */
+    public CheckstyleGrader(double points, double deduct, String pathToJar, String dirToCheck, String visibility) {
         this.points = points;
         this.deduct = deduct;
         this.pathToJar = pathToJar;
         this.dirToCheck = dirToCheck;
         this.config = null;
         this.errorTypes = new TreeMap<>();
+
+        this.setVisibility(visibility);
+    }
+
+    public void setVisibility(String visibility) {
+        if (!(visibility.equals(GradedTestResult.HIDDEN) || visibility.equals(GradedTestResult.VISIBLE)
+                || visibility.equals(GradedTestResult.AFTER_DUE_DATE) || visibility.equals(GradedTestResult.AFTER_PUBLISHED))) {
+            throw new IllegalArgumentException("visibility should be one of 'hidden', 'visible', "
+                    + "'after_due_date', or 'after_published'");
+        }
+
+        this.visibility = visibility;
+    }
+
+    public String getVisibility() {
+        return this.visibility;
     }
 
     /**
@@ -144,7 +173,7 @@ public class CheckstyleGrader {
     }
 
     private GradedTestResult initResult() {
-        return new GradedTestResult(CHECKSTYLE_NAME, "", this.points, VISIBLE);
+        return new GradedTestResult(CHECKSTYLE_NAME, "", this.points, this.visibility);
     }
 
     private GradedTestResult internalErrorResult(String msg) {
